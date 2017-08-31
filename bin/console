@@ -2,27 +2,12 @@
 
 require 'bundler/setup'
 require 'smuggle'
+require 'faker'
+require 'factory_girl'
+require 'pry'
+require_relative '../spec/support/user.rb'
+require_relative '../spec/support/exporters/with_attributes.rb'
+require_relative '../spec/support/exporters/without_attributes.rb'
 
-# You can add fixtures and/or initialization code here to make experimenting
-# with your gem easier. You can also use a different console, if you like.
-
-# (If you use this, don't forget to add pry to your Gemfile!)
-# require "pry"
-# Pry.start
-
-class User
-  def name
-    'Rick Sanchez'
-  end
-
-  def nickname
-    'Pickle Rick'
-  end
-end
-
-class UserExporter < Smuggle::Base
-  attributes :name, :nickname
-end
-
-require 'irb'
-IRB.start(__FILE__)
+FactoryGirl.find_definitions
+Pry.start
