@@ -22,7 +22,7 @@ module Smuggle
     end
 
     def resolve
-      "#{scope.name.demodulize.pluralize}Exporter".constantize
+      "#{scope.name.demodulize}Exporter".constantize
     rescue
       raise ExporterNotFound
     end
