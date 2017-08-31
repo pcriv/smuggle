@@ -1,0 +1,66 @@
+AllCops:
+  Include:
+    - Gemfile
+  Exclude:
+    - vendor/ruby/**/*
+    - lib/generators/**/*
+  TargetRubyVersion: 2.4
+
+Layout/SpaceBeforeFirstArg:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 25
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/LineLength:
+  Enabled: true
+  Max: 125
+
+Metrics/MethodLength:
+  Max: 25
+
+Layout/AlignHash:
+  EnforcedLastArgumentHashStyle: ignore_implicit
+
+Layout/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: nested
+
+Style/Documentation:
+  Enabled: false
+
+Style/FileName:
+  Enabled: false
+
+Style/FormatString:
+  EnforcedStyle: sprintf
+
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+Style/RegexpLiteral:
+  EnforcedStyle: mixed
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: single_quotes
+
+Style/TrivialAccessors:
+  AllowPredicates: true
+  AllowDSLWriters: true
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
