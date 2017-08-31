@@ -18,7 +18,7 @@ module Smuggle
 
     def to_csv
       defined_attributes.map do |name|
-        __getobj__.respond_to?(name) ? public_send(name) : __getobj__[name]
+        respond_to?(name) ? public_send(name) : __getobj__[name]
       end
     end
 
