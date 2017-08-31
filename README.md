@@ -1,10 +1,13 @@
 # Smuggle
+
+
 Is a gem to manage exports with ease, separating the logic from the models, resulting in a much cleaner codebase. Easy to use, with familiar structure.
 
 **The Smuggler gem is not dependent on Rails**
 You can use it on ActiveRecord models, as well as plain ruby objects and hashes.
 
 ## Installation
+
 
 Add this line to your application's Gemfile:
 
@@ -33,7 +36,10 @@ This will generate the following folder and files:
       create  app/exporters/application_exporter.rb
       create  app/exporters/user_exporter.rb
 ```
+
 ## Example
+
+
 Inside the `user_exporter.rb` file:
 ```ruby
 class UserExporter < ApplicationExporter
@@ -50,8 +56,12 @@ class UserExporter < ApplicationExporter
     end
 end
 ```
+If there are no attributes defined in the exporter, all the attributes of the ActiveModel record will be included.
+If it is a hash, then all values will be included.
 
 ## Usage
+
+
 Generate the csv in the desired export controller simply call:
 ```ruby
 Smuggle::Services::Export.call(scope: User.all, exporter: UserExporter)
@@ -62,8 +72,10 @@ And that is all. You can assign it to a variable and then make it respond to `cs
 Bug reports and pull requests are welcome on GitHub at https://github.com/pablocrivella/smuggle.
 
 ## Todo
+
 - Implement `importer` functionality
 
 ## License
+
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
