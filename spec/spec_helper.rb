@@ -1,5 +1,12 @@
 require 'bundler/setup'
 require 'smuggle'
+require 'support/user'
+require 'support/exporters/with_attributes'
+require 'support/exporters/without_attributes'
+require 'factory_girl'
+require 'faker'
+require 'pry'
+require 'pry-byebug'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -10,5 +17,11 @@ RSpec.configure do |config|
 
   config.expect_with :rspec do |c|
     c.syntax = :expect
+  end
+
+  config.include FactoryGirl::Syntax::Methods
+
+  config.before(:suite) do
+    FactoryGirl.find_definitions
   end
 end

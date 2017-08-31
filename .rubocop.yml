@@ -22,6 +22,11 @@ Metrics/LineLength:
 Metrics/MethodLength:
   Max: 25
 
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+    - '*.gemspec'
+
 Layout/AlignHash:
   EnforcedLastArgumentHashStyle: ignore_implicit
 

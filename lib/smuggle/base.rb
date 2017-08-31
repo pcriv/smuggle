@@ -10,12 +10,22 @@ module Smuggle
       def attributes(*names)
         @attributes.concat names
       end
+
+      def attributes?
+        @attributes.any?
+      end
     end
 
     def to_csv
-      self.class.attributes.map do |name|
-        __getobj__.respond_to?(name) ? public_send(name) : [name]
+      defined_attributes.map do |name|
+        __getobj__.respond_to?(name) ? public_send(name) : __getobj__[name]
       end
+    end
+
+    def defined_attributes
+      return self.class.attributes if self.class.attributes?
+      return attribute_names if __getobj__.respond_to?(:attribute_names)
+      keys if __getobj__.respond_to?(:keys)
     end
   end
 end
