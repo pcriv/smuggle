@@ -1,5 +1,5 @@
 module Exporters
-  class WithAttributes < Smuggle::Base
+  class WithAttributes < Smuggle::Exporter::Base
     attributes :name
   end
 end

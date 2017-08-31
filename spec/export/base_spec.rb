@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Smuggle::Base do
+RSpec.describe Smuggle::Exporter::Base do
   describe '#to_csv' do
     context 'when record is a plain ruby object' do
       let(:record) { build(:user) }
