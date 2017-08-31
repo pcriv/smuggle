@@ -11,7 +11,7 @@ module Smuggle
       argument :scope, required: true,
         desc: 'The scope to create exporter for, e.g. users, comments'
 
-      argument :attributes, type: :array,
+      argument :attributes, type: :array, required: false,
         desc: 'Specify the attributes you want to export, these will also be the headers.'
 
       def create_exporter
