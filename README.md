@@ -1,13 +1,10 @@
 # Smuggle
 
-
 Is a gem to manage exports with ease, separating the logic from the models, resulting in a much cleaner codebase. Easy to use, with familiar structure.
 
-**The Smuggler gem is not dependent on Rails**
-You can use it on ActiveRecord models, as well as plain ruby objects and hashes.
+**Smuggle is not dependent on Rails**, you can use it on ActiveRecord models, as well as plain ruby objects and hashes.
 
 ## Installation
-
 
 Add this line to your application's Gemfile:
 
@@ -17,56 +14,90 @@ gem 'smuggle'
 
 And then execute:
 
-    $ bundle
+```
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install smuggle
-To generate an exporter, you can run the following command:
 ```
-    $ rails g smuggle User
+$ gem install smuggle
+```
+
+To generate an exporter, you can run the following command:
+
+```
+$ rails g smuggle User
 ```
 
 You can also include the attributes you wish to export by running:
+
 ```
-    $ rails g smuggle User email username created_at
+$ rails g smuggle User email username created_at
 ```
 This will generate the following folder and files:
+
 ```
-      create  app/exporters/application_exporter.rb
-      create  app/exporters/user_exporter.rb
+create app/exporters/application_exporter.rb
+create app/exporters/user_exporter.rb
 ```
 
 ## Example
 
-
 Inside the `user_exporter.rb` file:
+
 ```ruby
 class UserExporter < ApplicationExporter
-    attributes :email, :username, :created_at
+  attributes :email, :username, :created_at
 end
 ```
+
 Extra logic can be establish inside the exporter file, using the same name as the attribute:
+
 ```ruby
 class UserExporter < ApplicationExporter
-    attributes :email, :username, :created_at
-    
-    def created_at
-        super.created_at.strftime("%m/%d/%Y")
-    end
+  attributes :email, :username, :created_at
+
+  def created_at
+    super.created_at.strftime("%m/%d/%Y")
+  end
 end
 ```
+
 If there are no attributes defined in the exporter, all the attributes of the ActiveModel record will be included.
 If it is a hash, then all values will be included.
 
 ## Usage
 
-
 Generate the csv in the desired export controller simply call:
+
 ```ruby
-Smuggle::Services::Export.call(scope: User.all, exporter: UserExporter)
+class User
+  attr_accessor :name
+
+  def initialize(name)
+    @name = name
+  end
+end
+
+class UserExporter < ApplicationExporter
+  attributes :name
+end
+
+users = [User.new('Rick Sanchez'), User.new('Morty Smith')]
+
+Smuggle::Services::Export.call(scope: users, exporter: UserExporter)
+# => "name\n" + "Rick Sanchez\n" + "Morty Smith\n"
 ```
+
+Or if you are using active record, the exporter class will be automatically resolved from the scope:
+
+```ruby
+Smuggle::Services::Export.call(scope: User.all)
+```
+
 And that is all. You can assign it to a variable and then make it respond to `csv` to generate the desired file.
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/pablocrivella/smuggle.
@@ -76,6 +107,5 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/pabloc
 - Implement `importer` functionality
 
 ## License
-
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
