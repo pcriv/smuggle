@@ -10,9 +10,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Pablo Crivella']
   spec.email         = ['pablocrivella@gmail.com']
 
-  spec.summary       = %q{Magic!}
-  spec.description   = %q{Magic!}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{It Exports stuff to CSV}
+  spec.description   = %q{It Exports all kind of stuff to CSV}
+  spec.homepage      = 'https://github.com/pablocrivella/smuggle'
   spec.license       = 'MIT'
 
   spec.files = `git ls-files -z`.split("\x0").reject do |f|
