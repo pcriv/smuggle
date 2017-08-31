@@ -10,5 +10,19 @@ require "smuggle"
 # require "pry"
 # Pry.start
 
-require "irb"
+class User
+  def name
+    'Rick Sanchez'
+  end
+
+  def nickname
+    'Pickle Rick'
+  end
+end
+
+class UserExporter < Smuggle::Base
+  attributes :name, :nickname
+end
+
+require 'irb'
 IRB.start(__FILE__)
