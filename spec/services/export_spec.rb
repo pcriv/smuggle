@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Smuggle::Exporter do
+RSpec.describe Smuggle::Services::Export do
   describe '.call' do
     let(:scope) { build_list(:user, 10) }
 

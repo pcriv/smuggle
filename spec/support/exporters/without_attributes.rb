@@ -1,4 +1,4 @@
 module Exporters
-  class WithoutAttributes < Smuggle::Base
+  class WithoutAttributes < Smuggle::Exporter::Base
   end
 end
