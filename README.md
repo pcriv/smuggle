@@ -96,8 +96,6 @@ Or if you are using active record, the exporter class will be automatically reso
 Smuggle::Services::Export.call(scope: User.all)
 ```
 
-And that is all. You can assign it to a variable and then make it respond to `csv` to generate the desired file.
-
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/pablocrivella/smuggle.
