@@ -24,21 +24,24 @@ Or install it yourself as:
 $ gem install smuggle
 ```
 
-To generate an exporter, you can run the following command:
+To generate the base exporter run:
 
 ```
-$ rails g smuggle User
+$ rails g smuggle:install
+create app/exporters/application_exporter.rb
+```
+
+To geneate an exporter, you can run the following command:
+
+```
+$ rails g smuggle:exporter user
+create app/exporters/user_exporter.rb
 ```
 
 You can also include the attributes you wish to export by running:
 
 ```
-$ rails g smuggle User email username created_at
-```
-This will generate the following folder and files:
-
-```
-create app/exporters/application_exporter.rb
+$ rails g smuggle:exporter user email username created_at
 create app/exporters/user_exporter.rb
 ```
 
