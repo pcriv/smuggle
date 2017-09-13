@@ -1,0 +1,14 @@
+Description:
+    Generates a exporter for a scope with the given name.
+    Additionally, you can pass the attributes you want to include in the export.
+
+Example:
+    rails generate smuggle:exporter user first_name last_name
+
+    This will create:
+
+    # app/exporter/user_exporter.rb
+
+    class UserExporter < ApplicationExporter
+      attributes :first_name, :last_name
+    end
