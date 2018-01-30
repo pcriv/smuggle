@@ -101,7 +101,7 @@ Smuggle::Services::Export.call(scope: User.all)
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/pablocrivella/smuggle.
+Bug reports and pull requests are welcome on GitHub at https://github.com/InspireNL/smuggle.
 
 ## Todo
 
