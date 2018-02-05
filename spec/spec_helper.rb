@@ -4,7 +4,8 @@ require 'support/user'
 require 'support/exporters/with_attributes'
 require 'support/exporters/without_attributes'
 require 'support/exporters/with_attributes_and_labels'
-require 'factory_girl'
+require 'support/importers/user_importer'
+require 'factory_bot'
 require 'faker'
 require 'pry'
 require 'pry-byebug'
@@ -20,9 +21,9 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
 
   config.before(:suite) do
-    FactoryGirl.find_definitions
+    FactoryBot.find_definitions
   end
 end

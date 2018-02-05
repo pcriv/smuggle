@@ -14,8 +14,8 @@ module Smuggle
       attr_reader :scope
 
       def initialize(scope, options = {})
-        @scope = scope
         @exporter = options[:exporter]
+        @scope = scope
       end
 
       def call
@@ -24,7 +24,7 @@ module Smuggle
 
       def resolve
         "#{scope.name.demodulize}Exporter".constantize
-      rescue
+      rescue NameError
         raise ExporterNotFound
       end
 

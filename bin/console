@@ -3,11 +3,12 @@
 require 'bundler/setup'
 require 'smuggle'
 require 'faker'
-require 'factory_girl'
+require 'factory_bot'
 require 'pry'
 require_relative '../spec/support/user.rb'
 require_relative '../spec/support/exporters/with_attributes.rb'
 require_relative '../spec/support/exporters/without_attributes.rb'
+require_relative '../spec/support/importers/user_importer.rb'
 
-FactoryGirl.find_definitions
+FactoryBot.find_definitions
 Pry.start
