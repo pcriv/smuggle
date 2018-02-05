@@ -4,7 +4,7 @@ AllCops:
   Exclude:
     - vendor/ruby/**/*
     - lib/generators/**/*
-  TargetRubyVersion: 2.4
+  TargetRubyVersion: 2.5
 
 Layout/SpaceBeforeFirstArg:
   Enabled: false
@@ -27,6 +27,9 @@ Metrics/BlockLength:
     - spec/**/*
     - '*.gemspec'
 
+Naming/FileName:
+  Enabled: false
+
 Layout/AlignHash:
   EnforcedLastArgumentHashStyle: ignore_implicit
 
@@ -43,9 +46,6 @@ Style/ClassAndModuleChildren:
   EnforcedStyle: nested
 
 Style/Documentation:
-  Enabled: false
-
-Style/FileName:
   Enabled: false
 
 Style/FormatString:
