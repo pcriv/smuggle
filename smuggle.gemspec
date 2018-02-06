@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Pablo Crivella']
   spec.email         = ['pablocrivella@gmail.com']
 
-  spec.summary       = 'It Exports stuff to CSV and Imports stuff from CSV'
-  spec.description   = 'It Exports all kind of stuff to CSV and Imports stuff from CSV'
+  spec.summary       = 'It exports and imports all kinds of stuff from and to CSV'
+  spec.description   = 'It exports and imports all kinds of stuff from and to CSV'
   spec.homepage      = 'https://github.com/InspireNL/smuggle'
   spec.license       = 'MIT'
 
