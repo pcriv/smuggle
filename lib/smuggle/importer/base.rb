@@ -33,9 +33,14 @@ module Smuggle
       end
 
       def to_h
-        self.class.attributes.each_with_object({}) do |attribute, hash|
-          hash[attribute] = respond_to?(attribute) ? public_send(attribute) : row[attribute]
+        defined_attributes.each_with_object({}) do |attribute, hash|
+          hash[attribute.to_sym] = respond_to?(attribute) ? public_send(attribute) : row[attribute.to_sym]
         end
+      end
+
+      def defined_attributes
+        return self.class.attributes if self.class.attributes?
+        model.attribute_names if model.respond_to?(:attribute_names)
       end
     end
   end
