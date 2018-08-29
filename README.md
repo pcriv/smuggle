@@ -99,6 +99,30 @@ Or if you are using active record, the exporter class will be automatically reso
 Smuggle::Services::Export.call(scope: User.all)
 ```
 
+## Attribute labels
+
+To add labels for your attributes (to show in the header instead of the raw attribute keys) you can add **attribute_labels** to your exporter:
+
+``` ruby
+class User
+  attr_accessor :name
+
+  def initialize(name)
+    @name = name
+  end
+end
+
+class UserExporter < ApplicationExporter
+  attributes :name
+  attribute_labels name: 'Full name'
+end
+
+users = [User.new('Rick Sanchez'), User.new('Morty Smith')]
+
+Smuggle::Services::Export.call(scope: users, exporter: UserExporter)
+# => "Full name\n" + "Rick Sanchez\n" + "Morty Smith\n"
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/InspireNL/smuggle.

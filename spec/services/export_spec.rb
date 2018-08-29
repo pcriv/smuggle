@@ -17,5 +17,13 @@ RSpec.describe Smuggle::Services::Export do
         expect(described_class.call(params)).to match(/\A([\S ]+(\n))+\z/)
       end
     end
+
+    context 'with attribute labels' do
+      let(:params) { Hash(scope: scope, exporter: Exporters::WithAttributesAndLabels) }
+
+      it 'returns csv data with labels in the header row' do
+        expect(described_class.call(params)).to start_with("Full name")
+      end
+    end
   end
 end

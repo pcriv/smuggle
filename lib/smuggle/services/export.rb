@@ -34,7 +34,7 @@ module Smuggle
 
       def generate_csv
         CSV.generate do |csv|
-          csv << exporter.attributes
+          csv << exporter.header
 
           scope.each do |record|
             csv << exporter.new(record).to_csv

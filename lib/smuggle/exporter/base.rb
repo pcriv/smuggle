@@ -3,9 +3,11 @@ module Smuggle
     class Base < SimpleDelegator
       class << self
         attr_accessor :attributes
+        attr_accessor :attribute_labels
 
         def inherited(base)
           base.attributes = []
+          base.attribute_labels = {}
         end
 
         def attributes(*names)
@@ -14,6 +16,21 @@ module Smuggle
 
         def attributes?
           @attributes.any?
+        end
+
+        def attribute_labels(labels)
+          @attribute_labels.merge!(labels)
+        end
+
+        def attribute_labels?
+          @attribute_labels.any?
+        end
+
+        def header
+          return @attributes unless attribute_labels?
+          return @attributes.map do |attribute|
+            @attribute_labels.fetch(attribute, attribute)
+          end
         end
       end
 
