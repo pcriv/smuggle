@@ -107,7 +107,6 @@ Or if you are using active record, the exporter class will be automatically reso
 Smuggle::Services::Export.call(scope: User.all)
 ```
 
-<<<<<<< HEAD
 ## Attribute labels
 
 To add labels for your attributes (to show in the header instead of the raw attribute keys) you can add **attribute_labels** to your exporter:
@@ -132,10 +131,7 @@ Smuggle::Services::Export.call(scope: users, exporter: UserExporter)
 # => "Full name\n" + "Rick Sanchez\n" + "Morty Smith\n"
 ```
 
-## Contributing
-=======
 ## Importers: Example
->>>>>>> Update README
 
 ```ruby
 class User < ApplicationRecord
