@@ -1,4 +1,4 @@
-require 'csv'
+# frozen_string_literal: true
 
 module Smuggle
   module Services
@@ -24,7 +24,7 @@ module Smuggle
       end
 
       def resolve
-        "#{model.name.demodulize}Importer".constantize
+        Object.const_get("#{model.name}Importer")
       rescue NameError
         raise ImporterNotFound
       end
@@ -34,7 +34,7 @@ module Smuggle
       end
 
       def import_from_csv
-        CSV.foreach(filepath, headers: true, **importer.csv_converters) do |row|
+        CSV.read(filepath, headers: true, **importer.csv_converters).map do |row|
           importer.new(row, model).persist
         end
       end
