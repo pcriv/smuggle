@@ -23,7 +23,7 @@ module Smuggle
       end
 
       def resolve
-        "#{scope.name.demodulize}Exporter".constantize
+        Object.const_get("#{scope.name}Exporter")
       rescue NameError
         raise ExporterNotFound
       end
