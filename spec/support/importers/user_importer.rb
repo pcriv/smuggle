@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Importers
   class UserImporter < Smuggle::Importer::Base
     attributes :name, :location
@@ -9,11 +11,13 @@ module Importers
     end
 
     def name
-      [row[:first_name], row[:last_name]].join(' ')
+      [row[:first_name], row[:last_name]].join(" ")
     end
 
     def persist
-      self.class.db << model.new(to_h[:name], to_h[:location])
+      model.new(*to_h.values).tap do |record|
+        self.class.db << record
+      end
     end
   end
 end
