@@ -1,14 +1,14 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
-require 'bundler/setup'
-require 'smuggle'
-require 'faker'
-require 'factory_bot'
-require 'pry'
-require_relative '../spec/support/user.rb'
-require_relative '../spec/support/exporters/with_attributes.rb'
-require_relative '../spec/support/exporters/without_attributes.rb'
-require_relative '../spec/support/importers/user_importer.rb'
+require "bundler/setup"
+require "smuggle"
+require "faker"
+require "pry"
+require "pry-byebug"
+require "./spec/support/user.rb"
+require "./spec/support/exporters/with_attributes.rb"
+require "./spec/support/exporters/without_attributes.rb"
+require "./spec/support/importers/user_importer.rb"
 
-FactoryBot.find_definitions
 Pry.start
