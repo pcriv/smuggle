@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Smuggle
   module Importer
     class Base
@@ -40,6 +42,7 @@ module Smuggle
 
       def defined_attributes
         return self.class.attributes if self.class.attributes?
+
         model.attribute_names if model.respond_to?(:attribute_names)
       end
     end

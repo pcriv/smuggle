@@ -1,4 +1,4 @@
-require 'csv'
+# frozen_string_literal: true
 
 module Smuggle
   module Services
