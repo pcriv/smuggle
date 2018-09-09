@@ -22,12 +22,13 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.15"
-  spec.add_development_dependency "factory_bot", "~> 4.8"
   spec.add_development_dependency "faker", "~> 1.8"
   spec.add_development_dependency "pry", "~> 0.10"
   spec.add_development_dependency "pry-byebug", "~> 3.5"
   spec.add_development_dependency "rake", "~> 12.3"
   spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "rspec_junit_formatter", "~> 0.4"
   spec.add_development_dependency "rubocop", "~> 0.59"
   spec.add_development_dependency "rubocop-rspec", "~> 1.29"
+  spec.add_development_dependency "simplecov", "~> 0.16"
 end
