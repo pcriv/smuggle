@@ -51,7 +51,7 @@ class User
 end
 ```
 
-To define a exporter you need to inherit from [Smuggle::Exporter::Base](lib/smuggle/exporter/base.rb) and define the attributes to export:
+An exporter can be defined by inheriting from [Smuggle::Exporter::Base](lib/smuggle/exporter/base.rb) and define the attributes to export:
 
 ```ruby
 class UserExporter < Smuggle::Exporter::Base
@@ -79,7 +79,7 @@ To generate the csv data simply call:
 ```ruby
 users = [User.new("Rick Sanchez"), User.new("Morty Smith")]
 Smuggle::Services::Export.call(scope: users, exporter: UserExporter)
-# => "name\n" + "Rick Sanchez\n" + "Morty Smith\n"
+# => "Full name,Full name\nRick Sanchez,Rick Sanchez\nMorty Smith,Morty Smith\n"
 ```
 
 Or if you are using ActiveRecord, the exporter class will be automatically resolved from the scope:
@@ -99,7 +99,7 @@ end
 users = [User.new("Rick Sanchez"), User.new("Morty Smith")]
 
 Smuggle::Services::Export.call(scope: users, exporter: UserExporter)
-# => "Full name\n" + "Rick Sanchez\n" + "Morty Smith\n"
+# => "Full name\nRick Sanchez\nMorty Smith\n"
 ```
 
 ### Importers
@@ -166,7 +166,7 @@ create app/exporters/application_exporter.rb
 create app/importers/application_importer.rb
 ```
 
-To geneate an exporter, you can run the following command:
+To generate an exporter, you can run the following command:
 
 ```
 $ rails g smuggle:exporter user
@@ -180,7 +180,7 @@ $ rails g smuggle:exporter user email username created_at
 create app/exporters/user_exporter.rb
 ```
 
-And to geneate an importer, just run:
+And to generate an importer, just run:
 
 ```
 $ rails g smuggle:importer user email username full_name
