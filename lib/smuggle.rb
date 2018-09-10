@@ -1,8 +1,10 @@
-require 'smuggle/version'
-require 'smuggle/exporter/base'
-require 'smuggle/services/export'
-require 'smuggle/exporter_not_found'
-require 'smuggle/engine' if defined?(Rails)
+# frozen_string_literal: true
 
-module Smuggle
-end
+require "csv"
+require "smuggle/version"
+require "smuggle/errors"
+require "smuggle/exporter/base"
+require "smuggle/importer/base"
+require "smuggle/services/export"
+require "smuggle/services/import"
+require "smuggle/engine" if defined?(Rails)

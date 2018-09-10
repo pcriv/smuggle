@@ -1,31 +1,12 @@
+require: rubocop-rspec
 AllCops:
   Include:
     - Gemfile
+    - lib/**/*.rb
+    - spec/**/*.rb
   Exclude:
-    - vendor/ruby/**/*
-    - lib/generators/**/*
-  TargetRubyVersion: 2.4
-
-Layout/SpaceBeforeFirstArg:
-  Enabled: false
-
-Metrics/AbcSize:
-  Max: 25
-
-Metrics/CyclomaticComplexity:
-  Max: 10
-
-Metrics/LineLength:
-  Enabled: true
-  Max: 125
-
-Metrics/MethodLength:
-  Max: 25
-
-Metrics/BlockLength:
-  Exclude:
-    - spec/**/*
-    - '*.gemspec'
+    - lib/generators/**/templates/*.rb
+  TargetRubyVersion: 2.5
 
 Layout/AlignHash:
   EnforcedLastArgumentHashStyle: ignore_implicit
@@ -39,26 +20,43 @@ Layout/MultilineMethodCallIndentation:
 Layout/MultilineOperationIndentation:
   EnforcedStyle: indented
 
+Layout/SpaceBeforeFirstArg:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/LineLength:
+  Enabled: true
+  Max: 125
+
+Naming/FileName:
+  Enabled: false
+
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
+
 Style/ClassAndModuleChildren:
   EnforcedStyle: nested
 
 Style/Documentation:
   Enabled: false
 
-Style/FileName:
-  Enabled: false
+Style/EmptyMethod:
+  EnforcedStyle: expanded
 
 Style/FormatString:
   EnforcedStyle: sprintf
-
-Style/EmptyMethod:
-  EnforcedStyle: expanded
 
 Style/RegexpLiteral:
   EnforcedStyle: mixed
 
 Style/StringLiterals:
-  EnforcedStyle: single_quotes
+  EnforcedStyle: double_quotes
 
 Style/StringLiteralsInInterpolation:
   EnforcedStyle: single_quotes
@@ -66,6 +64,3 @@ Style/StringLiteralsInInterpolation:
 Style/TrivialAccessors:
   AllowPredicates: true
   AllowDSLWriters: true
-
-Style/FrozenStringLiteralComment:
-  Enabled: false

@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module Smuggle
   module Exporter
     class Base < SimpleDelegator
       class << self
-        attr_accessor :attributes
-        attr_accessor :attribute_labels
+        attr_writer :attributes
+        attr_writer :attribute_labels
 
         def inherited(base)
           base.attributes = []
@@ -28,7 +30,8 @@ module Smuggle
 
         def header
           return @attributes unless attribute_labels?
-          return @attributes.map do |attribute|
+
+          @attributes.map do |attribute|
             @attribute_labels.fetch(attribute, attribute)
           end
         end
@@ -43,6 +46,7 @@ module Smuggle
       def defined_attributes
         return self.class.attributes if self.class.attributes?
         return attribute_names if __getobj__.respond_to?(:attribute_names)
+
         keys if __getobj__.respond_to?(:keys)
       end
     end
