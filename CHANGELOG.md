@@ -7,17 +7,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## 0.4.0 - 2018-09-10
+
 ### Added
 
 - Import functionality.
 
 ### Removed
 
-- Dev dependency on factory_bot
+- Dev dependency on factory_bot.
 
 ## 0.3.0 - 2018-08-29
 
 ### Added
 
-- Changelog
-- Attribute labels
+- Changelog.
+- Attribute labels.
