@@ -3,8 +3,9 @@
 require "spec_helper"
 
 RSpec.describe Smuggle::Importer::Base do
-  subject(:importer) { importer_class.new(csv_row, User) }
+  subject(:importer) { importer_class.new(csv_row, imported_class) }
 
+  let(:imported_class) { User }
   let(:csv_row) { CSV::Row.new(%i[name location], %w[Rick Earth]) }
 
   describe "#persist" do
@@ -29,7 +30,17 @@ RSpec.describe Smuggle::Importer::Base do
     context "when the importer is empty" do
       let(:importer_class) { Importers::EmptyImporter }
 
-      it { is_expected.to eq({}) }
+      context "and the model's class has .attribute_names" do
+        it "contains the specified attributes" do
+          is_expected.to include(name: "Rick", location: "Earth")
+        end
+      end
+
+      context "and the model's class doesn't have .attribute_names" do
+        let(:imported_class) { Object }
+
+        it { is_expected.to eq({}) }
+      end
     end
 
     context "when the importer is basic" do
