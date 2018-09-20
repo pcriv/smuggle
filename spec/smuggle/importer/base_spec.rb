@@ -3,66 +3,68 @@
 require "spec_helper"
 
 RSpec.describe Smuggle::Importer::Base do
-  subject(:importer) { importer_class.new(row, User) }
+  subject(:importer) { importer_class.new(csv_row, User) }
 
-  context "when the importer is empty" do
-    let(:importer_class) { Importers::EmptyImporter }
-    let(:row) { CSV::Row.new(%i[name location], %w[Rick Earth]) }
+  let(:csv_row) { CSV::Row.new(%i[name location], %w[Rick Earth]) }
 
-    describe "#persist" do
-      subject(:persist) { importer.persist }
+  describe "#persist" do
+    subject(:persist) { importer.persist }
 
-      it { expect { persist }.to raise_error(NotImplementedError) }
+    context "when the importer is empty" do
+      let(:importer_class) { Importers::EmptyImporter }
+
+      specify { expect { persist }.to raise_error(NotImplementedError) }
     end
 
-    describe "#to_h" do
-      subject(:to_h) { importer.to_h }
+    context "when the importer is basic" do
+      let(:importer_class) { Importers::BasicUserImporter }
+
+      specify { expect { persist }.not_to raise_error }
+    end
+  end
+
+  describe "#to_h" do
+    subject(:to_h) { importer.to_h }
+
+    context "when the importer is empty" do
+      let(:importer_class) { Importers::EmptyImporter }
 
       it { is_expected.to eq({}) }
     end
 
-    describe "#defined_attributes" do
-      subject(:defined_attributes) { importer.defined_attributes }
+    context "when the importer is basic" do
+      let(:importer_class) { Importers::BasicUserImporter }
 
-      it { is_expected.to eq([]) }
-    end
-  end
+      it "contains the specified attributes" do
+        is_expected.to include(name: "Rick", location: "Earth")
+      end
 
-  context "when the importer is basic" do
-    let(:importer_class) { Importers::BasicUserImporter }
-    let(:row) { CSV::Row.new(%i[name location unnecessary_field], %w[Rick Earth Plumbus]) }
+      context "and is given an extra column" do
+        before { csv_row << { unnecessary_field: "Plumbus" } }
 
-    describe "#persist" do
-      subject(:persist) { importer.persist }
-
-      it "does not raise an exception" do
-        expect { persist }.not_to raise_error
+        it "does not contain any other keys" do
+          expect(to_h.keys).to contain_exactly(:name, :location)
+        end
       end
     end
 
-    describe "#to_h" do
-      subject(:to_h) { importer.to_h }
-
-      it "contains the requested attributes" do
-        expect(to_h).to include(name: "Rick", location: "Earth")
-      end
-
-      it "does not contain other keys" do
-        expect(to_h.keys).to contain_exactly(:name, :location)
-      end
-    end
-  end
-
-  context "when the importer combines two fields" do
-    let(:importer_class) { Importers::CombineImporter }
-    let(:row) { CSV::Row.new(%i[first_name last_name], %w[Rick Sanchez]) }
-
-    describe "#to_h" do
-      subject(:to_h) { importer.to_h }
+    context "when the importer combines two fields" do
+      let(:importer_class) { Importers::CombineImporter }
+      let(:csv_row) { CSV::Row.new(%i[first_name last_name], %w[Rick Sanchez]) }
 
       it "contains the attribute combined from the CSV" do
-        expect(to_h).to include(name: "Rick Sanchez")
+        is_expected.to include(name: "Rick Sanchez")
       end
+    end
+  end
+
+  describe "#defined_attributes" do
+    subject(:defined_attributes) { importer.defined_attributes }
+
+    context "when the importer is empty" do
+      let(:importer_class) { Importers::EmptyImporter }
+
+      it { is_expected.to eq([]) }
     end
   end
 end
