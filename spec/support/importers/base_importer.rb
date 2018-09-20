@@ -1,17 +1,15 @@
 # frozen_string_literal: true
 
 module Importers
-  class UserImporter < Smuggle::Importer::Base
-    attributes :name, :location
-
-    @db = []
-
+  # A base importer that sets up simple storage of imported data when inherited from.
+  class BaseImporter < Smuggle::Importer::Base
     class << self
       attr_accessor :db
-    end
 
-    def name
-      [row[:first_name], row[:last_name]].join(" ")
+      def inherited(subclass)
+        super
+        subclass.db = []
+      end
     end
 
     def persist
