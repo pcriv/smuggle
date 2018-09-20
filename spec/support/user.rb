@@ -3,6 +3,12 @@
 class User
   attr_reader :name, :location
 
+  class << self
+    def attribute_names
+      %i[name location]
+    end
+  end
+
   def initialize(name, location)
     @name = name
     @location = location
