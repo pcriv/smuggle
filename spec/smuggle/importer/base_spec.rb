@@ -57,14 +57,4 @@ RSpec.describe Smuggle::Importer::Base do
       end
     end
   end
-
-  describe "#defined_attributes" do
-    subject(:defined_attributes) { importer.defined_attributes }
-
-    context "when the importer is empty" do
-      let(:importer_class) { Importers::EmptyImporter }
-
-      it { is_expected.to eq([]) }
-    end
-  end
 end

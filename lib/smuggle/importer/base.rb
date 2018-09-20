@@ -40,6 +40,8 @@ module Smuggle
         end
       end
 
+      private
+
       def defined_attributes
         return self.class.attributes if self.class.attributes?
 
