@@ -51,7 +51,7 @@ class User
 end
 ```
 
-An exporter can be defined by inheriting from [Smuggle::Exporter::Base](lib/smuggle/exporter/base.rb) and define the attributes to export:
+An exporter can be defined by inheriting from [Smuggle::Exporter::Base](lib/smuggle/exporter/base.rb) and defining the attributes to export:
 
 ```ruby
 class UserExporter < Smuggle::Exporter::Base
@@ -104,31 +104,38 @@ Smuggle::Services::Export.call(scope: users, exporter: UserExporter)
 
 ### Importers
 
-Give the following ActiveRecord model:
+Given the following plain old ruby object:
 
 ```ruby
-class User < ApplicationRecord
-  validates :full_name, :username, presence: true
+class User
+  attr_accessor :name
+
+  def initialize(name)
+    @name = name
+  end
 end
 ```
 
-To define a importers you need to inherit from [Smuggle::Importer::Base](lib/smuggle/importer/base.rb) and define the attributes to import:
+An importer can be defined by inheriting from [Smuggle::Importer::Base](lib/smuggle/importer/base.rb) and defining the attributes to export:
 
 ```ruby
 class UserImporter < Smuggle::Importer::Base
-  # List all the attributes you need to import, everything else will be ignored
-  attributes :full_name, :username
+  # If no attributes are defined, the importer will infer them from the model's .attribute_names
+  # If any attributes are explicitly defined, all other entries in the CSV are ignored
+  attributes :name
 
   # Computed attributes from the row data
-  def full_name
+  def name
     [row[:first_name], row[:last_name]].join(" ")
   end
 
   def persist
-    # You can implement how to persist the data anyway you prefer
-    # This is an example using active record
-    model.create(to_h)
-    # model.new(to_h).save(validate: false) # Another example skipping validations
+    # Create your instance here
+    model.new(to_h)
+    # The result is collected by the Import service
+
+    # If you want to persist your data, you can do so here. This is an example using ActiveRecord
+    # model.create(to_h)
   end
 end
 ```
@@ -138,16 +145,16 @@ For example:
 Given the following `users.csv` file:
 
 ```
-"first_name","last_name","username"
-"Rick","Sanchez","rsanchez"
-"Morty","Smith","msmith"
-"Jerry","Smith","jsmith"
+"first_name","last_name"
+"Rick","Sanchez"
+"Morty","Smith"
 ```
 
 Just run:
 
 ```ruby
 Smuggle::Services::Import.call(model: User, filepath: "users.csv")
+# => [#<User name: "Rick Sanchez">, #<User name: "Morty Smith">]
 ```
 
 The importer class will be resolved from the model name, otherwise you could explicitely set the importer like this:
