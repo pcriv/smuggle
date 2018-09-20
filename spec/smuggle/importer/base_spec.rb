@@ -13,13 +13,13 @@ RSpec.describe Smuggle::Importer::Base do
     context "when the importer is empty" do
       let(:importer_class) { Importers::EmptyImporter }
 
-      specify { expect { persist }.to raise_error(NotImplementedError) }
+      it { expect { persist }.to raise_error(NotImplementedError) }
     end
 
     context "when the importer is basic" do
       let(:importer_class) { Importers::BasicUserImporter }
 
-      specify { expect { persist }.not_to raise_error }
+      it { expect { persist }.not_to raise_error }
     end
   end
 
