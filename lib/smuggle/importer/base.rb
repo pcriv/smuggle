@@ -6,8 +6,8 @@ module Smuggle
       class << self
         attr_writer :attributes
 
-        def inherited(base)
-          base.attributes = []
+        def inherited(subclass)
+          subclass.attributes = []
         end
 
         def attributes(*names)
@@ -40,10 +40,14 @@ module Smuggle
         end
       end
 
+      private
+
       def defined_attributes
         return self.class.attributes if self.class.attributes?
 
-        model.attribute_names if model.respond_to?(:attribute_names)
+        return model.attribute_names if model.respond_to?(:attribute_names)
+
+        []
       end
     end
   end

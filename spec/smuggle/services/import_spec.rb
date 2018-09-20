@@ -18,10 +18,10 @@ RSpec.describe Smuggle::Services::Import do
     context "with importer option" do
       subject(:call) { described_class.call(model: model, filepath: filepath, importer: importer) }
 
-      let(:importer) { Importers::UserImporter }
+      let(:importer) { Importers::BasicUserImporter }
 
       it "imports rows from csv file" do
-        expect { call }.to change { importer.db.count }.from(0).to(3)
+        expect { call }.to change { importer.db.count }.by(3)
       end
 
       it { is_expected.to be_an Array }

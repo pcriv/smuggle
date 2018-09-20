@@ -5,14 +5,18 @@ SimpleCov.start
 
 require "bundler/setup"
 require "smuggle"
+require "faker"
+require "pry"
+require "pry-byebug"
+
 require "support/user"
 require "support/exporters/with_attributes"
 require "support/exporters/without_attributes"
 require "support/exporters/with_attributes_and_labels"
-require "support/importers/user_importer"
-require "faker"
-require "pry"
-require "pry-byebug"
+require "support/importers/empty_importer"
+require "support/importers/base_importer"
+require "support/importers/basic_user_importer"
+require "support/importers/combine_importer"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
