@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+
+- `Smuggle::Importer::Base#defined_attributes` has been made `private`.
+
 ## 0.4.0 - 2018-09-10
 
 ### Added
