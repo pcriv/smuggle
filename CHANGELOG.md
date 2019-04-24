@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.5.0] - 2019-04-24
+
 ### Changed
 
 - `Smuggle::Importer::Base#defined_attributes` has been made `private`.
@@ -29,5 +31,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Changelog.
 - Attribute labels.
 
-[Unreleased]: https://github.com/pablocrivella/statics/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/pablocrivella/statics/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/pablocrivella/statics/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/pablocrivella/statics/releases/tag/v0.4.0
