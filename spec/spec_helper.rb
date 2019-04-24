@@ -34,6 +34,6 @@ RSpec.configure do |config|
   end
 
   def build_record
-    User.new(Faker::RickAndMorty.character, Faker::RickAndMorty.location)
+    User.new(Faker::TvShows::RickAndMorty.character, Faker::TvShows::RickAndMorty.location)
   end
 end
