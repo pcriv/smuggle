@@ -36,7 +36,10 @@ module Smuggle
         CSV.generate do |csv|
           csv << exporter.header
 
-          scope.each do |record|
+          method = :each
+          method = :find_each if scope.respond_to?(:find_each)
+
+          scope.public_send(method) do |record|
             csv << exporter.new(record).to_csv
           end
         end
