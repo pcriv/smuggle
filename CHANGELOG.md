@@ -10,8 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 
 - `Smuggle::Importer::Base#defined_attributes` has been made `private`.
+- Use `find_each` when given scope responds to it. (For when an `ActiveRecord::Relation` is given as scope)
 
-## 0.4.0 - 2018-09-10
+## [0.4.0] - 2018-09-10
 
 ### Added
 
@@ -27,3 +28,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Changelog.
 - Attribute labels.
+
+[Unreleased]: https://github.com/pablocrivella/statics/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/pablocrivella/statics/releases/tag/v0.4.0
