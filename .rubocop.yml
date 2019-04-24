@@ -1,4 +1,7 @@
-require: rubocop-rspec
+require:
+  - rubocop-rspec
+  - rubocop-performance
+
 AllCops:
   Include:
     - Gemfile
