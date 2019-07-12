@@ -27,35 +27,36 @@ RSpec.describe Smuggle::Importer::Base do
   describe "#to_h" do
     subject(:to_h) { importer.to_h }
 
-    context "when the importer is empty" do
+    context "when the importer is empty and the model's class responds to .attribute_names" do
       let(:importer_class) { Importers::EmptyImporter }
 
-      context "and the model's class has .attribute_names" do
-        it "contains the specified attributes" do
-          is_expected.to include(name: "Rick", location: "Earth")
-        end
+      it "contains the specified attributes" do
+        expect(to_h).to include(name: "Rick", location: "Earth")
       end
+    end
 
-      context "and the model's class doesn't have .attribute_names" do
-        let(:imported_class) { Object }
+    context "when the importer is empty and the model's class does not respond to .attribute_names" do
+      let(:importer_class) { Importers::EmptyImporter }
+      let(:imported_class) { Object }
 
-        it { is_expected.to eq({}) }
-      end
+      it { expect(to_h).to eq({}) }
     end
 
     context "when the importer is basic" do
       let(:importer_class) { Importers::BasicUserImporter }
 
       it "contains the specified attributes" do
-        is_expected.to include(name: "Rick", location: "Earth")
+        expect(to_h).to include(name: "Rick", location: "Earth")
       end
+    end
 
-      context "and is given an extra column" do
-        before { csv_row << { unnecessary_field: "Plumbus" } }
+    context "when the importer is basic and is given an extra column" do
+      let(:importer_class) { Importers::BasicUserImporter }
 
-        it "does not contain any other keys" do
-          expect(to_h.keys).to contain_exactly(:name, :location)
-        end
+      before { csv_row << { unnecessary_field: "Plumbus" } }
+
+      it "does not contain any other keys" do
+        expect(to_h.keys).to contain_exactly(:name, :location)
       end
     end
 
@@ -64,7 +65,7 @@ RSpec.describe Smuggle::Importer::Base do
       let(:csv_row) { CSV::Row.new(%i[first_name last_name], %w[Rick Sanchez]) }
 
       it "contains the attribute combined from the CSV" do
-        is_expected.to include(name: "Rick Sanchez")
+        expect(to_h).to include(name: "Rick Sanchez")
       end
     end
   end
