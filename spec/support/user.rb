@@ -15,7 +15,7 @@ class User
   end
 
   def attributes
-    { name: name, location: location }
+    {name: name, location: location}
   end
 
   def attribute_names
