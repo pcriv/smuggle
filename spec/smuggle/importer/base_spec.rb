@@ -53,7 +53,7 @@ RSpec.describe Smuggle::Importer::Base do
     context "when the importer is basic and is given an extra column" do
       let(:importer_class) { Importers::BasicUserImporter }
 
-      before { csv_row << { unnecessary_field: "Plumbus" } }
+      before { csv_row << {unnecessary_field: "Plumbus"} }
 
       it "does not contain any other keys" do
         expect(to_h.keys).to contain_exactly(:name, :location)
