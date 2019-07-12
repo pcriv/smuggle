@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+
+- Refactor Export and Import services to allow inject the resolver dependency via construtor.
+
+### Added
+
+- Smuggle::Import::Resolver class.
+- Smuggle::Export::Resolver class.
+
 ## [0.5.0] - 2019-04-24
 
 ### Changed
