@@ -3,36 +3,17 @@
 module Smuggle
   module Services
     class Export
-      class << self
-        def call(scope:, **options)
-          new(scope, options).send(:call)
-        end
+      def self.call(**args)
+        new.call(args)
       end
 
-      private
-
-      attr_reader :scope
-
-      def initialize(scope, options = {})
-        @exporter = options[:exporter]
-        @scope = scope
+      def initialize(resolver: Smuggle::Exporter::Resolver.new)
+        @resolver = resolver
       end
 
-      def call
-        generate_csv
-      end
+      def call(scope:, **options)
+        exporter = options.fetch(:exporter) { @resolver.call(scope: scope) }
 
-      def resolve
-        Object.const_get("#{scope.name}Exporter")
-      rescue NameError
-        raise ExporterNotFound
-      end
-
-      def exporter
-        @exporter || resolve
-      end
-
-      def generate_csv
         CSV.generate do |csv|
           csv << exporter.header
 

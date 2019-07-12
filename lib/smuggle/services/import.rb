@@ -3,37 +3,17 @@
 module Smuggle
   module Services
     class Import
-      class << self
-        def call(model:, filepath:, **options)
-          new(model, filepath, options).send(:call)
-        end
+      def self.call(**args)
+        new.call(args)
       end
 
-      private
-
-      attr_reader :model, :filepath
-
-      def initialize(model, filepath, options = {})
-        @filepath = filepath
-        @importer = options[:importer]
-        @model = model
+      def initialize(resolver: Smuggle::Importer::Resolver.new)
+        @resolver = resolver
       end
 
-      def call
-        import_from_csv
-      end
+      def call(model:, filepath:, **options)
+        importer = options.fetch(:importer) { @resolver.call(model: model) }
 
-      def resolve
-        Object.const_get("#{model.name}Importer")
-      rescue NameError
-        raise ImporterNotFound
-      end
-
-      def importer
-        @importer || resolve
-      end
-
-      def import_from_csv
         CSV.read(filepath, headers: true, **importer.csv_converters).map do |row|
           importer.new(row, model).persist
         end
