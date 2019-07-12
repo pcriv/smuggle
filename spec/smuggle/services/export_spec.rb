@@ -3,8 +3,20 @@
 require "spec_helper"
 
 RSpec.describe Smuggle::Services::Export do
+  subject(:export) { described_class.new }
+
   describe ".call" do
     subject(:call) { described_class.call(params) }
+
+    let(:params) { Hash(scope: [], exporter: Exporters::WithAttributes) }
+
+    it "passes arguments to Smuggle::Services::Export#call" do
+      expect(call).to eq("name\n")
+    end
+  end
+
+  describe "#call" do
+    subject(:call) { export.call(params) }
 
     let(:scope) { build_records(10) }
 
