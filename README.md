@@ -210,8 +210,8 @@ Read [Semantic Versioning](https://semver.org) for details. Briefly, it means:
 - Minor (x.Y.z) - Incremented for new, backwards compatible, public API enhancements/fixes.
 - Patch (x.y.Z) - Incremented for small, backwards compatible, bug fixes.
 
-## License
-Original work copyright 2018-2019 [Inspire Innovation BV](https://inspire.nl).
+## License 
+Original work copyright 2017-2019 [Inspire Innovation BV](https://inspire.nl).
 Continued work copyright 2019 Pablo Crivella. 
 
 Read [LICENSE](LICENSE) for details.
