@@ -211,6 +211,9 @@ Read [Semantic Versioning](https://semver.org) for details. Briefly, it means:
 - Patch (x.y.Z) - Incremented for small, backwards compatible, bug fixes.
 
 ## License
+Original work copyright 2018-2019 [Inspire Innovation BV](https://inspire.nl).
+Continued work copyright 2019 Pablo Crivella. 
 
-Copyright 2018 [Inspire Innovation BV](https://inspire.nl).
 Read [LICENSE](LICENSE) for details.
+
+The development of this gem has been sponsored by Inspire Innovation BV (Utrecht, The Netherlands).
