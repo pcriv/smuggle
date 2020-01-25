@@ -3,7 +3,6 @@
 [![Gem](https://img.shields.io/gem/v/smuggle.svg?style=flat)](http://rubygems.org/gems/smuggle)
 [![Depfu](https://badges.depfu.com/badges/6f2f73672eae4d603d6ae923164435e2/overview.svg)](https://depfu.com/github/InspireNL/smuggle?project=Bundler)
 [![Inline docs](http://inch-ci.org/github/InspireNL/smuggle.svg?branch=master&style=shields)](http://inch-ci.org/github/InspireNL/smuggle)
-[![CircleCI](https://circleci.com/gh/InspireNL/smuggle.svg?style=svg)](https://circleci.com/gh/InspireNL/smuggle)
 [![Maintainability](https://api.codeclimate.com/v1/badges/cc59cfca7a9d29c18e12/maintainability)](https://codeclimate.com/github/InspireNL/smuggle/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/cc59cfca7a9d29c18e12/test_coverage)](https://codeclimate.com/github/InspireNL/smuggle/test_coverage)
 
@@ -210,10 +209,10 @@ Read [Semantic Versioning](https://semver.org) for details. Briefly, it means:
 - Minor (x.Y.z) - Incremented for new, backwards compatible, public API enhancements/fixes.
 - Patch (x.y.Z) - Incremented for small, backwards compatible, bug fixes.
 
-## License 
- 
+## License
+
 Original work copyright 2017-2019 [Inspire Innovation BV](https://inspire.nl).
-Continued work copyright 2019 Pablo Crivella. 
+Continued work copyright 2019 Pablo Crivella.
 
 Read [LICENSE](LICENSE) for details.
 
