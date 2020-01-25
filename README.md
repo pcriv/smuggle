@@ -1,10 +1,10 @@
 # Smuggle
 
 [![Gem](https://img.shields.io/gem/v/smuggle.svg?style=flat)](http://rubygems.org/gems/smuggle)
-[![Depfu](https://badges.depfu.com/badges/6f2f73672eae4d603d6ae923164435e2/overview.svg)](https://depfu.com/github/InspireNL/smuggle?project=Bundler)
-[![Inline docs](http://inch-ci.org/github/InspireNL/smuggle.svg?branch=master&style=shields)](http://inch-ci.org/github/InspireNL/smuggle)
-[![Maintainability](https://api.codeclimate.com/v1/badges/cc59cfca7a9d29c18e12/maintainability)](https://codeclimate.com/github/InspireNL/smuggle/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/cc59cfca7a9d29c18e12/test_coverage)](https://codeclimate.com/github/InspireNL/smuggle/test_coverage)
+[![Depfu](https://badges.depfu.com/badges/6f2f73672eae4d603d6ae923164435e2/overview.svg)](https://depfu.com/github/pablocrivella/smuggle?project=Bundler)
+[![Inline docs](http://inch-ci.org/github/pablocrivella/smuggle.svg?branch=master&style=shields)](http://inch-ci.org/github/pablocrivella/smuggle)
+[![Maintainability](https://api.codeclimate.com/v1/badges/b7192c49c395b2ac9bac/maintainability)](https://codeclimate.com/github/pablocrivella/smuggle/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/b7192c49c395b2ac9bac/test_coverage)](https://codeclimate.com/github/pablocrivella/smuggle/test_coverage)
 
 Is a gem to manage exports and imports with ease, separating the logic from the models, resulting in a much cleaner codebase. Easy to use, with familiar structure.
 
@@ -12,9 +12,9 @@ Is a gem to manage exports and imports with ease, separating the logic from the 
 
 Links:
 
-  - [API Docs](https://www.rubydoc.info/gems/smuggle)
-  - [Contributing](https://github.com/InspireNL/smuggle/blob/master/CONTRIBUTING.md)
-  - [Code of Conduct](https://github.com/InspireNL/smuggle/blob/master/CODE_OF_CONDUCT.md)
+- [API Docs](https://www.rubydoc.info/gems/smuggle)
+- [Contributing](https://github.com/pablocrivella/smuggle/blob/master/CONTRIBUTING.md)
+- [Code of Conduct](https://github.com/pablocrivella/smuggle/blob/master/CODE_OF_CONDUCT.md)
 
 ## Requirements
 
