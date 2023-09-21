@@ -8,7 +8,7 @@ module Smuggle
       argument :attributes, type: :array, required: true
 
       def create_importer
-        template "importer.rb", File.join("app/importers", class_path, "#{file_name}_importer.rb")
+        template "importer.rb.erb", File.join("app/importers", class_path, "#{file_name}_importer.rb")
       end
     end
   end

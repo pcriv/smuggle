@@ -9,6 +9,8 @@ class DummyUserRelation
   end
 end
 
+UserExporter = Class.new(Smuggle::Exporter::Base)
+
 RSpec.describe Smuggle::Exporter::Resolver do
   subject(:resolver) { described_class.new }
 
@@ -18,10 +20,6 @@ RSpec.describe Smuggle::Exporter::Resolver do
     subject(:call) { resolver.call(scope: scope) }
 
     context "when the exporter class for the given scope is defined" do
-      before do
-        UserExporter = Class.new(Smuggle::Exporter::Base)
-      end
-
       after do
         Object.send(:remove_const, :UserExporter)
       end
