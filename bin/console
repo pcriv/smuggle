@@ -9,6 +9,7 @@ require "pry-byebug"
 require "./spec/support/user.rb"
 require "./spec/support/exporters/with_attributes.rb"
 require "./spec/support/exporters/without_attributes.rb"
-require "./spec/support/importers/user_importer.rb"
+require "./spec/support/importers/base_importer.rb"
+require "./spec/support/importers/basic_user_importer.rb"
 
 Pry.start
