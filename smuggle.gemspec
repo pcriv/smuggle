@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.version = Smuggle::VERSION
   spec.metadata = {
     "bug_tracker_uri" => "https://github.com/pcriv/smuggle/issues",
-    "changelog_uri" => "https://github.com/pcriv/smuggle/blob/master/CHANGELOG.md",
+    "changelog_uri" => "https://github.com/pcriv/smuggle/blob/main/CHANGELOG.md",
     "source_code_uri" => "https://github.com/pcriv/smuggle"
   }
   spec.extra_rdoc_files = Dir["README*", "LICENSE*"]
