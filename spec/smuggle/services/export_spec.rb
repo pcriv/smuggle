@@ -6,9 +6,9 @@ RSpec.describe Smuggle::Services::Export do
   subject(:export) { described_class.new }
 
   describe ".call" do
-    subject(:call) { described_class.call(params) }
+    subject(:call) { described_class.call(**params) }
 
-    let(:params) { Hash(scope: [], exporter: Exporters::WithAttributes) }
+    let(:params) { {scope: [], exporter: Exporters::WithAttributes} }
 
     it "passes arguments to Smuggle::Services::Export#call" do
       expect(call).to eq("name\n")
@@ -16,12 +16,12 @@ RSpec.describe Smuggle::Services::Export do
   end
 
   describe "#call" do
-    subject(:call) { export.call(params) }
+    subject(:call) { export.call(**params) }
 
     let(:scope) { build_records(10) }
 
     context "without exporter option" do
-      let(:params) { Hash(scope: scope) }
+      let(:params) { {scope: scope} }
 
       it "raises exception" do
         expect { call }.to raise_error(Smuggle::ExporterNotFound)
@@ -29,7 +29,7 @@ RSpec.describe Smuggle::Services::Export do
     end
 
     context "with exporter option" do
-      let(:params) { Hash(scope: scope, exporter: Exporters::WithAttributes) }
+      let(:params) { {scope: scope, exporter: Exporters::WithAttributes} }
 
       it "returns csv data" do
         expect(call).to match(/\A([\S ]+(\n))+\z/)
@@ -37,7 +37,7 @@ RSpec.describe Smuggle::Services::Export do
     end
 
     context "with attribute labels" do
-      let(:params) { Hash(scope: scope, exporter: Exporters::WithAttributesAndLabels) }
+      let(:params) { {scope: scope, exporter: Exporters::WithAttributesAndLabels} }
 
       it "returns csv data with labels in the header row" do
         expect(call).to start_with("Full name")
