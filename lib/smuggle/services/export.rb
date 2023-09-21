@@ -3,17 +3,15 @@
 module Smuggle
   module Services
     class Export
-      def self.call(**args)
-        new.call(args)
+      def self.call(args)
+        new.call(**args)
       end
 
       def initialize(resolver: Smuggle::Exporter::Resolver.new)
         @resolver = resolver
       end
 
-      def call(scope:, **options)
-        exporter = options.fetch(:exporter) { @resolver.call(scope: scope) }
-
+      def call(scope:, exporter: @resolver.call(scope: scope))
         CSV.generate do |csv|
           csv << exporter.header
 

@@ -6,11 +6,11 @@ module Smuggle
       source_root File.expand_path(File.join(File.dirname(__FILE__), "templates"))
 
       def copy_application_exporter
-        template "application_exporter.rb", "app/exporters/application_exporter.rb"
+        template "application_exporter.rb.erb", "app/exporters/application_exporter.rb"
       end
 
       def copy_application_importer
-        template "application_importer.rb", "app/importers/application_importer.rb"
+        template "application_importer.rb.erb", "app/importers/application_importer.rb"
       end
     end
   end

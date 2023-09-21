@@ -2,6 +2,8 @@
 
 require "spec_helper"
 
+UserImporter = Class.new(Smuggle::Importer::Base)
+
 RSpec.describe Smuggle::Importer::Resolver do
   subject(:resolver) { described_class.new }
 
@@ -11,10 +13,6 @@ RSpec.describe Smuggle::Importer::Resolver do
     subject(:call) { resolver.call(model: model) }
 
     context "when the importer class for the given model is defined" do
-      before do
-        UserImporter = Class.new(Smuggle::Importer::Base)
-      end
-
       after do
         Object.send(:remove_const, :UserImporter)
       end
