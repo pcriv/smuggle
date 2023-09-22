@@ -212,7 +212,7 @@ Read [Semantic Versioning](https://semver.org) for details. Briefly, it means:
 ## License
 
 Original work copyright 2017-2019 [Inspire Innovation BV](https://inspire.nl).
-Continued work copyright 2019 Pablo Crivella.
+Continued work copyright 2019 [Pablo Crivella](https://pcriv.com).
 
 Read [LICENSE](LICENSE) for details.
 
